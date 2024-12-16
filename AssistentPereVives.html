@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistent Virtual de l'Escola</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #303235;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5px;
+            background-color: white !important;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .header img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: calc(100vh - 160px); /* Adjusts for header and footer height */
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-top: 0;
+            color: #3B81F6;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: -10px;
+            color: #606770;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #606770;
+            width: 100%;
+            background-color: #f0f4f8;
+            position: relative;
+            padding: 5px;
+            bottom: 20px;
+        }
+
+        .footer a {
+            color: lightgray;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="https://www.premisneptuigualada.cat/wp-content/uploads/2020/02/pere-vives.jpg" alt="Logo Institut Pere Vives Igualada">
+    </div>
+
+    <div class="chat-container">
+        <h1>Assistent Virtual IPPV </h1>
+
+        <flowise-fullchatbot></flowise-fullchatbot>
+    </div>
+
+    <div class="footer">
+        <span>Aquesta web forma part del TDR de Maria Graells.</span><br>
+        <span>Aquest assistent virtual utilitza intel·ligència artificial, i es basa en una arquitectura RAG i Flowise.</span>
+    </div>
+
+    <script type="module">
+        import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+        Chatbot.initFull({
+            chatflowid: "af2c9a5e-0bbf-4bad-b7af-84284a6f3e8a",
+            apiHost: "https://flowise-jsq0.onrender.com",
+            theme: {
+                chatWindow: {
+                    showTitle: true,
+                    title: 'Si vols esborrar el contingut, fes clic ',
+                    titleAvatarSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                    showAgentMessages: true,
+                    welcomeMessage: 'Bones, com et puc ajudar? Si em fas preguntes amb context, les meves respostes seran més precises.',
+                    errorMessage: 'Ho sentim, hi ha hagut un error. Torna-ho a intentar.',
+                    backgroundColor: "#ffffff",
+                    height: "100%",
+                    width: "100%",
+                    fontSize: 16,
+                    botMessage: {
+                        backgroundColor: "#f7f8ff",
+                        textColor: "#303235",
+                        showAvatar: true,
+                        avatarSrc: "https://www.shareicon.net/data/128x128/2016/11/21/854794_r2d2_512x512.png",
+                    },
+                    userMessage: {
+                        backgroundColor: "#3B81F6",
+                        textColor: "#ffffff",
+                        showAvatar: true,
+                        avatarSrc: "https://cdn4.iconfinder.com/data/icons/famous-character-vol-2-flat/48/Avatar_Famous_Characters-44-1024.png",
+                    },
+                    textInput: {
+                        placeholder: 'Escriu la teva pregunta',
+                        backgroundColor: '#ffffff',
+                        textColor: '#303235',
+                        sendButtonColor: '#3B81F6',
+                        maxChars: 500,
+                        maxCharsWarningMessage: 'Has superat el límit de 500 caràcters en la teva pregunta. Redueix la teva consulta.',
+                        autoFocus: true,
+                        sendMessageSound: true,
+                        receiveMessageSound: true,
+                    },
+                    feedback: {
+                        color: '#303235',
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+</html>
